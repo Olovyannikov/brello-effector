@@ -1,37 +1,39 @@
-# Имя сценария
 name: Deploy Brello to PROD
-# реакции
+
 on:
-  # на пуш
   push:
-    # конкретные ветки
     branches:
       - master
-# что именно делаем
+
 jobs:
   build:
-    # где запускаем
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup PNPM
+
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: pnpm
-      - name: Install Dependencies
+          cache: "pnpm"
+
+      - name: Install dependencies
         run: pnpm install
-      - name: Build Project
+
+      - name: Build project
         run: pnpm build
         env:
           NODE_ENV: production
-      - name: Publish
+
+      - name: Publish to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --prod --dir './dist' --message="Deploy from ${{ github.event.head_commit.message }}"
+          args: deploy --prod --dir=dist --message="Deploy from ${{ github.event.head_commit.message }}"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
