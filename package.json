@@ -44,6 +44,11 @@
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.6.2",
+    "stylelint": "^16.22.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
+    "stylelint-order": "^7.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4"
