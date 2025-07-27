@@ -31,7 +31,7 @@ jobs:
           NODE_ENV: production
 
       - name: Publish
-        run: pnpm exec netlify-cli deploy --prod --dir=dist --message="Deploy from ${{ github.event.head_commit.message }}"
+        run: npx netlify-cli deploy --prod --dir=dist --message="Deploy from ${{ github.event.head_commit.message }}"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
