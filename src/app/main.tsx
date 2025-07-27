@@ -6,6 +6,6 @@ const root = document.getElementById('root') as HTMLElement;
 
 createRoot(root).render(
     <ThemeProvider>
-        Hello world
+        Hello world 2
     </ThemeProvider>,
 )
