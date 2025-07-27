@@ -7,7 +7,6 @@ on:
     # конкретные ветки
     branches:
       - master
-      - setup-cicd
 # что именно делаем
 jobs:
   build:
