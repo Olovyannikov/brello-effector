@@ -1,0 +1,58 @@
+name: Run checks for PR
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+        env:
+          NODE_ENV: production
+
+      # Запуск линтеров
+      - name: Run Prettier
+        run: pnpm run prettier
+
+      - name: Run ESLint
+        run: pnpm run lint:ts
+#
+#      - name: Run FSD Lint
+#        run: pnpm run lint:fsd
+#
+#      - name: Run CSS Lint
+#        run: pnpm run lint:css
+#
+#      - name: Run Madge (circular deps)
+#        run: pnpm exec madge --circular --extensions ts,tsx src/
+#
+#      - name: Run Knip
+#        run: pnpm exec knip
+
+# Запуск тестов
+#      - name: Run Unit Tests
+#        run: pnpm run test:unit
+#        env:
+#          NODE_OPTIONS: '--max_old_space_size=4096' # При необходимости

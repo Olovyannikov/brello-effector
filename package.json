@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "preview": "vite preview",
     "preinstall": "npx only-allow pnpm"
   },
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react-swc": "^3.10.2",
@@ -36,9 +37,11 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "lefthook": "^1.12.2",
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.6.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4"
