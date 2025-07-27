@@ -38,12 +38,12 @@ jobs:
 
       - name: Run ESLint
         run: pnpm run lint:ts
+
+      - name: Run CSS Lint
+        run: pnpm run lint:css
 #
 #      - name: Run FSD Lint
 #        run: pnpm run lint:fsd
-#
-#      - name: Run CSS Lint
-#        run: pnpm run lint:css
 #
 #      - name: Run Madge (circular deps)
 #        run: pnpm exec madge --circular --extensions ts,tsx src/
