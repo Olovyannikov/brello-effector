@@ -1,13 +1,15 @@
 pre-commit:
   parallel: true
   commands:
+    solidarity:
+      run: pnpm exec solidarity
     prettier:
       run: pnpm exec prettier --write {staged_files} && git add {staged_files}
+    fsd:
+      run: pnpm run lint:fsd
     eslint:
       glob: '*.{ts,tsx,js,jsx}'
       run: pnpm run lint:ts
     stylelint:
       glob: '*.{css}'
       run: pnpm run lint:css {staged_files}
-    fsd:
-      run: pnpm run lint:fsd

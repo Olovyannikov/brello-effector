@@ -44,6 +44,9 @@ jobs:
 
       - name: Run FSD Lint
         run: pnpm run lint:fsd
+
+      - name: Run Solidarity Check
+        run: pnpm exec solidarity
 #
 #      - name: Run Madge (circular deps)
 #        run: pnpm exec madge --circular --extensions ts,tsx src/

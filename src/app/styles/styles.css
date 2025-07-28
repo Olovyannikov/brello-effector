@@ -1,6 +1,10 @@
+@import url("modern-normalize/modern-normalize.css");
 @import url("@mantine/core/styles.css");
 @import url("@mantine/dates/styles.css");
 @import url("@mantine/dropzone/styles.css");
 @import url("@mantine/notifications/styles.css");
 @import url("@mantine/spotlight/styles.css");
 @import url("@mantine/tiptap/styles.css");
+@import url("general/_fonts.css");
+@import url("general/_variables.css");
+@import url("general/_scaffoldings.css");
