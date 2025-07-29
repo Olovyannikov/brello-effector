@@ -1,14 +1,39 @@
-import { Button, type MantineColor } from '@mantine/core';
-import { IconPlus } from '@tabler/icons-react';
+import { useState } from 'react';
 
-interface AddKanbanCardActionProps {
-    color: MantineColor;
-}
+import { Button, Textarea } from '@mantine/core';
+import { nanoid } from 'nanoid';
 
-export const AddKanbanCardAction = ({ color }: AddKanbanCardActionProps) => {
+import type { KanbanCardEntity } from '@/entities/Kanban';
+
+export function KanbanCreateCard({ onCreate }: { onCreate: (card: KanbanCardEntity) => void }) {
+    const [title, setTitle] = useState('');
+
+    function onReset() {
+        setTitle('');
+    }
+
+    function onSubmit(event: React.FormEvent) {
+        event.preventDefault();
+        onCreate({ id: nanoid(), title });
+        onReset();
+    }
+
     return (
-        <Button fullWidth color={color.split('.').shift()} variant='light' mt='sm' leftSection={<IconPlus size={14} />}>
-            Add card
-        </Button>
+        <form onSubmit={onSubmit}>
+            <Textarea
+                mb='md'
+                radius='md'
+                bg='white'
+                variant='md'
+                rows={3}
+                style={{
+                    borderRadius: 16,
+                }}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder='Start making new card here'
+            />
+            <Button type='submit'>Add card</Button>
+        </form>
     );
-};
+}

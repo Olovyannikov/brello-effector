@@ -7,7 +7,22 @@ export default defineConfig(({ mode }) => {
     const isDev = mode === 'development';
 
     return {
-        plugins: [react()],
+        plugins: [
+            react({
+                plugins: [
+                    [
+                        '@effector/swc-plugin',
+                        {
+                            factories: ['./src/shared/factories', '@/shared/factories'],
+                            debugSids: isDev,
+                            hmr: isDev ? 'es' : false,
+                            addNames: isDev,
+                            addLoc: isDev,
+                        },
+                    ],
+                ],
+            }),
+        ],
         css: {
             modules: {
                 localsConvention: 'camelCase',
