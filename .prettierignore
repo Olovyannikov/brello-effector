@@ -42,7 +42,6 @@ firebase
 .serverless/
 .fusebox/
 .dynamodb/
-.tern-port
 .vscode-test
 .yarn/cache
 .yarn/unplugged
@@ -52,7 +51,6 @@ firebase
 .wrangler/
 .vercel
 .prettierignore
-.prettierrc
 .stylelintignore
 .stylelintrc
 .gitignore
@@ -65,9 +63,13 @@ firebase
 *.jpg
 *.avif
 .solidarity
-*.txt
 *.xml
 Dockerfile
 *.yml
 .cursor
 .swc
+Makefile
+*.toml
+*.sql
+*.ico
+*.gz

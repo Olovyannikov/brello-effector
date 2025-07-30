@@ -3,29 +3,35 @@ import { useState } from 'react';
 import { Draggable } from '@hello-pangea/dnd';
 import { ActionIcon, Box, Group, Paper, Text, Textarea } from '@mantine/core';
 import { IconCheck, IconPencil, IconTrash, IconX } from '@tabler/icons-react';
+import { useUnit } from 'effector-react';
 
-import type { KanbanCardEntity } from '../../types';
+import { KanbanModel } from '@/entities/Kanban';
 
 interface KanbanCardProps {
     id: string;
+    columnId: string;
     index: number;
     title: string;
-    onEdit: (card: KanbanCardEntity) => void;
-    onDelete: () => void;
 }
 
-export function KanbanCard({ id, index, title, onDelete, onEdit }: KanbanCardProps) {
+export function KanbanCard({ id, index, title, columnId }: KanbanCardProps) {
+    const [onCardEdit, onCardDelete] = useUnit([KanbanModel.cardEditClicked, KanbanModel.cardDeleteClicked]);
+
     const [editTitle, setEditTitle] = useState(title);
     const [editMode, setEditMode] = useState(false);
 
-    function onReset() {
+    function resetEditForm() {
         setEditTitle(title);
         setEditMode(false);
     }
 
     function onEditFinished() {
-        onEdit({ id, title: editTitle });
-        onReset();
+        onCardEdit({ columnId, cardId: id, card: { title: editTitle } });
+        resetEditForm();
+    }
+
+    function onDelete() {
+        onCardDelete({ columnId, cardId: id });
     }
 
     if (editMode) {
@@ -36,7 +42,7 @@ export function KanbanCard({ id, index, title, onDelete, onEdit }: KanbanCardPro
                     <ActionIcon onClick={onEditFinished}>
                         <IconCheck size={14} />
                     </ActionIcon>
-                    <ActionIcon onClick={onReset}>
+                    <ActionIcon onClick={resetEditForm}>
                         <IconX size={14} />
                     </ActionIcon>
                 </Group>
@@ -54,7 +60,7 @@ export function KanbanCard({ id, index, title, onDelete, onEdit }: KanbanCardPro
                             <ActionIcon variant='transparent' onClick={() => setEditMode(true)}>
                                 <IconPencil size={14} />
                             </ActionIcon>
-                            <ActionIcon variant='transparent' onClick={() => onDelete()}>
+                            <ActionIcon variant='transparent' onClick={onDelete}>
                                 <IconTrash size={14} />
                             </ActionIcon>
                         </Group>

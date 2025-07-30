@@ -13,3 +13,15 @@ pre-commit:
     stylelint:
       glob: '*.{css}'
       run: pnpm run lint:css {staged_files}
+    circular:
+      run: pnpm exec madge --circular --extensions ts,tsx src
+    unit-test:
+      run: pnpm run test:unit
+    knip:
+      run: knip && pnpm run knip:md && pnpm run knip:fix
+
+commit-msg:
+  parallel: true
+  commands:
+    lint-commit-msg:
+      run: pnpm exec commitlint --edit $1

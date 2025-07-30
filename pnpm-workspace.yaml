@@ -3,3 +3,5 @@ onlyBuiltDependencies:
     - ejs
     - esbuild
     - lefthook
+    - oxc-resolver
+    - supabase

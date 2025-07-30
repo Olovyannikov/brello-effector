@@ -1,6 +1,10 @@
 import { createRoot } from 'react-dom/client';
 
-import { IndexPage } from '../pages/IndexPage';
+// TODO: remove
+import '@/shared/api';
+
+import { IndexPage } from '@/pages/IndexPage';
+
 import { ThemeProvider } from './providers';
 import './styles/styles.css';
 

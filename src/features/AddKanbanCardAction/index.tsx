@@ -1,20 +1,23 @@
-import { useState } from 'react';
+import { type FormEvent, useState } from 'react';
 
 import { Button, Textarea } from '@mantine/core';
-import { nanoid } from 'nanoid';
+import { useUnit } from 'effector-react';
 
-import type { KanbanCardEntity } from '@/entities/Kanban';
+import { KanbanModel } from '@/entities/Kanban';
 
-export function KanbanCreateCard({ onCreate }: { onCreate: (card: KanbanCardEntity) => void }) {
+export function KanbanCreateCard({ columnId }: { columnId: string }) {
+    const [onCreateCard] = useUnit([KanbanModel.cardCreateClicked]);
+
     const [title, setTitle] = useState('');
 
     function onReset() {
         setTitle('');
     }
 
-    function onSubmit(event: React.FormEvent) {
+    function onSubmit(event: FormEvent) {
         event.preventDefault();
-        onCreate({ id: nanoid(), title });
+
+        onCreateCard({ columnId, card: { title } });
         onReset();
     }
 

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/app/main.tsx"],
+  "project": ["src/**/*.{ts,tsx,js,jsx,mjs}"],
+  "ignore": ["**/*.global.css", "**/*.td.ts", "**/index.ts", ".github", "src/shared/**/*"],
+  "vite": {
+    "config": ["vite.config.{js,mjs,ts,cjs,mts,cts}"]
+  },
+  "ignoreDependencies": [
+    "stylelint*",
+    "@feature-sliced*",
+    "@vitest*",
+    "@effector*",
+    "modern-normalize",
+    "netlify*",
+    "удалить после использования!!!",
+    "@tiptap*",
+    "@mantine*",
+    "@supabase*",
+    "supabase",
+    "dayjs",
+    "patronum"
+  ]
+}

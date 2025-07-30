@@ -1,15 +1,14 @@
 *.tsx
-*.jsx
 *.ts
 *.md
 *.svg
 /node_modules
 *.json
 /.vercel
-.ideag
-**/*.lock
+.idea
 .env
 .stylelintignore
 .stylelintrc
 *.html
 .vite-inspect
+reports
