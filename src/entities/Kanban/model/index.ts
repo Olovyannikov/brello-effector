@@ -27,16 +27,13 @@ export const KanbanModel = atom(() => {
 
     const $board = createStore<KanbanBoard>(INITIAL_BOARD);
     $board.on(cardMovedInTheColumn, (board, { fromColumnId, fromIndex, toIndex }) => {
-        const updatedBoard = board.map((column) => {
+        return board.map((column) => {
             if (column.id === fromColumnId) {
-                const updatedList = listReorder(column, fromIndex, toIndex);
-                return updatedList;
+                return listReorder(column, fromIndex, toIndex);
             }
 
             return column;
         });
-
-        return updatedBoard;
     });
 
     $board.on(cardMovedToAnotherColumn, (board, { fromColumnId, toColumnId, fromIndex, toIndex }) => {

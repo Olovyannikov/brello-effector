@@ -29,7 +29,7 @@ export const KanbanBoard = () => {
         <DragDropContext onDragEnd={onDragEnd}>
             <Grid grow gutter='md'>
                 {board.map((column) => (
-                    <Grid.Col span={4}>
+                    <Grid.Col key={column.id} span={4}>
                         <KanbanColumn
                             key={column.id}
                             id={column.id}

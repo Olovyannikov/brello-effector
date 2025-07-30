@@ -1,8 +1,7 @@
-import { type PropsWithChildren } from 'react';
+import { type PropsWithChildren, type ReactNode } from 'react';
 
 import { Droppable } from '@hello-pangea/dnd';
 import { Box, Paper, Stack, Title } from '@mantine/core';
-import { type ReactNode } from '@tabler/icons-react';
 
 interface KanbanColumnProps {
     title: string;
