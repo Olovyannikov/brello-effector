@@ -62,9 +62,14 @@ export default tseslint.config([
             ...vitest.configs.recommended.rules,
             // base rules
             'no-console': [2, { allow: ['warn', 'error', 'info'] }],
+            'no-unused-vars': 0,
             // react
             'react/react-in-jsx-scope': 'off',
             // typescript
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
+            ],
             // prettier
             // vitest
         },

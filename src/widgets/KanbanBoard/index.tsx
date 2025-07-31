@@ -11,18 +11,19 @@ import { KanbanCard } from '@/widgets/KanbanCard';
 export const KanbanBoard = () => {
     const [board, onCardMove] = useUnit([KanbanModel.$board, KanbanModel.cardMoved]);
 
-    const onDragEnd: OnDragEndResponder = ({ source, destination }) => {
+    const onDragEnd: OnDragEndResponder = ({ source, destination, draggableId }) => {
         if (!destination) {
             // Dropped outside of a column
             return;
         }
 
-        const fromColumnId = source.droppableId;
-        const toColumnId = destination.droppableId;
+        const fromListId = source.droppableId;
+        const toListId = destination.droppableId;
         const fromIndex = source.index;
         const toIndex = destination.index;
+        const cardId = draggableId;
 
-        onCardMove({ fromColumnId, toColumnId, fromIndex, toIndex });
+        onCardMove({ fromListId, toListId, fromIndex, toIndex, cardId });
     };
 
     return (

@@ -1,16 +1,13 @@
 import { createRoot } from 'react-dom/client';
 
-// TODO: remove
-import '@/shared/api';
-
-import { listsLoadFx } from '@/entities/Kanban';
+import { appStarted } from '@/shared/services';
 
 import { IndexPage } from '@/pages/IndexPage';
 
 import { ThemeProvider } from './providers';
 import './styles/styles.css';
 
-listsLoadFx();
+appStarted();
 
 const root = document.getElementById('root') as HTMLElement;
 
